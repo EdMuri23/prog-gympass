@@ -1,6 +1,6 @@
 
 # prog-gympass
-Gestión de Gimnasio en Java
+Gestión de Clases.Gimnasio en Java
 
 # Proyecto Individual – Sistema GymPass
 
@@ -41,7 +41,7 @@ El gimnasio:
 
 Debes seguir los siguientes pasos:
 
-### Clase `Socio`
+### Clase `Clases.Socio`
 #### Atributos (privados)
 - `numeroSocio` (int)
 - `nombre` (String)
@@ -59,7 +59,7 @@ Debe inicializar ambos atributos.
 
 >[!important] Haz un commit en este punto
 
-### Clase `Sala`
+### Clase `Clases.Sala`
 #### Atributos:
 - `codigoSala` (int)
 - `descripcion` (String)
@@ -80,17 +80,20 @@ Sin arrays todavía.
 
 >[!important] Haz un commit en este punto
 
-### Clase `Gimnasio`
+### Clase `Clases.Gimnasio`
 #### Atributos:
 - `codigo` (String)
 - `nombre` (String)
-- `Socio[] listaSocios` (tamaño fijo, por ejemplo 12)
-- `Sala[] listaSalas` (tamaño fijo, por ejemplo 6)
+- `Clases.Socio[] listaSocios` (tamaño fijo, por ejemplo 12)
+- `Clases.Sala[] listaSalas` (tamaño fijo, por ejemplo 6)
 - `responsableId` (int, inicializado a -1)
 #### Métodos obligatorios
 (No deben imprimir nada)
 #####  Gestión de socios
+
 ```java
+import Clases.Socio;
+
 boolean registrarSocio(Socio s)
 ```
 - Inserta en la primera posición libre.
@@ -99,8 +102,9 @@ boolean registrarSocio(Socio s)
 
 >[!important] Haz un commit en este punto
 
-
 ```java
+import Clases.Socio;
+
 Socio expulsarSocio(int numero)
 ```
 - Elimina al socio si existe.
@@ -128,6 +132,8 @@ boolean designarResponsable(int numeroSocio)
 ### Gestión de salas
 
 ```java
+import Clases.Sala;
+
 boolean incorporarSala(Sala sala)
 ```
 - Inserta en primera posición libre.
@@ -158,8 +164,8 @@ Debe devolver un texto con:
 - Mostrar el informe.Atributos:
 - `codigo` (String)
 - `nombre` (String)
-- `Socio[] listaSocios` (tamaño fijo, por ejemplo 12)
-- `Sala[] listaSalas` (tamaño fijo, por ejemplo 6)
+- `Clases.Socio[] listaSocios` (tamaño fijo, por ejemplo 12)
+- `Clases.Sala[] listaSalas` (tamaño fijo, por ejemplo 6)
 - `responsableId` (int, inicializado a -1)
 #### Métodos obligatorios
 (No deben imprimir nada)
@@ -167,6 +173,8 @@ Debe devolver un texto con:
 ### Gestión de socios
 
 ```java  
+import Clases.Socio;
+
 boolean registrarSocio(Socio s)
 ```
 - Inserta en la primera posición libre.
@@ -176,6 +184,8 @@ boolean registrarSocio(Socio s)
 >[!important] Haz un commit en este punto
 
 ```java
+import Clases.Socio;
+
 Socio expulsarSocio(int numero)
 ```
 - Elimina al socio si existe.
@@ -199,7 +209,10 @@ boolean designarResponsable(int numeroSocio)
 >[!important] Haz un commit en este punto
 
 ### Gestión de salas
+
 ```java
+import Clases.Sala;
+
 boolean incorporarSala(Sala sala)
 ```
 - Inserta en primera posición libre.

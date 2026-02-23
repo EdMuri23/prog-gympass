@@ -1,3 +1,5 @@
+package Clases;
+
 public class Socio {
 
     private final int numeroSocio;
@@ -22,6 +24,7 @@ public class Socio {
 
     @Override
     public String toString() {
-        return super.toString();
+        new StringBuilder(numeroSocio + " " + nombre);
+        return toString();
     }
 }
