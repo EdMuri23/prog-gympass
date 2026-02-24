@@ -73,6 +73,10 @@ public class Gimnasio {
         return s;
     }
 
+    private boolean designarResponsable(int numeroSocio) {
+
+    }
+
     /** BUSCAR_PRIMER_HUECO_LIBRE_SOCIO
      *
      * @return
@@ -130,6 +134,7 @@ public class Gimnasio {
 
         return socioEncontrado;
     }
+
 
     //Gets
     public int getCodigo() {
