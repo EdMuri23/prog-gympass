@@ -34,19 +34,43 @@ public class Gimnasio {
      */
     private boolean registrarSocio(Socio s) {
         boolean registrado = false;
-        int posicion;
+        int posicionSocio = -1;
+        int posicionPrimerHuecoLibre = -1;
 
-        //1º Llamamos a socioEsxisteEnGym para comprobar si el Socio ya esta registrado en el Gimnasio
-        if (socioEsxisteEnGym(s.getNumeroSocio())){
+        posicionSocio = buscarSocio(s.getNumeroSocio());
+
+        //1º Llamamos a buscarSocio para comprobar si el Socio ya esta registrado en el Gimnasio
+        if (posicionSocio != -1) {
             //Si no existe buscamos el primer hueco vacio del array listasSocios
-            posicion = buscarPrimerHuecoLibreSocio();
-            if (posicion >= 0 && posicion < MAX_SOCIOS) {
-                listaSocios[posicion] = s;
+            posicionPrimerHuecoLibre = buscarPrimerHuecoLibreSocio();
+            if (posicionPrimerHuecoLibre != -1) {
+                listaSocios[posicionPrimerHuecoLibre] = s;
                 registrado = true;
             }
         }
 
         return registrado;
+    }
+
+    /** EXPULSAR_SOCIO
+     *
+     * @param numeroSocio
+     * @return
+     */
+    private Socio expulsarSocio(int numeroSocio) {
+        boolean expulsado = false;
+        int posicionSocio;
+        Socio s = null;
+
+        posicionSocio = buscarSocio(numeroSocio);
+
+        if (posicionSocio >= 0 && posicionSocio < MAX_SOCIOS) {
+            s = listaSocios[posicionSocio];
+            listaSocios[posicionSocio] = null;
+            expulsado = true;
+        }
+
+        return s;
     }
 
     /** BUSCAR_PRIMER_HUECO_LIBRE_SOCIO
@@ -55,24 +79,45 @@ public class Gimnasio {
      */
     private int buscarPrimerHuecoLibreSocio () {
         boolean huecoEncontrado = false;
+        int posicionPrimerHuecoLibre = -1;
         int i = 0;
 
         while (i < MAX_SOCIOS && !huecoEncontrado) {
             if (listaSocios[i] == null) {
+                posicionPrimerHuecoLibre = i;
                 huecoEncontrado = true;
-            } else {
-                i++;
             }
+            i++;
         }
-        return i;
+        return posicionPrimerHuecoLibre;
     }
 
-    /** SOCIO_EXISTE_EN_GYM
+    /**BUSCAR_SOCIO
+     *
+     * @param numeroSocio
+     * @return
+     */
+    private int buscarSocio(int numeroSocio) {
+        boolean socioEncontrado = false;
+        int posicionSocio = -1;
+        int i = 0;
+
+        while (i < MAX_SOCIOS && !socioEncontrado) {
+            if (listaSocios[i].getNumeroSocio() == numeroSocio) {
+                socioEncontrado = true;
+                posicionSocio = i;
+            }
+            i++;
+        }
+        return posicionSocio;
+    }
+
+    /**EXISTE_SOCIO
      *
      * @param numSocio
      * @return
      */
-    private boolean socioEsxisteEnGym(int numSocio) {
+    private boolean existeSocio(int numSocio) {
         boolean socioEncontrado = false;
         int i = 0;
 
