@@ -24,7 +24,7 @@ public class Socio {
 
     @Override
     public String toString() {
-        new StringBuilder(numeroSocio + " " + nombre);
-        return toString();
+        StringBuilder informSocio = new StringBuilder(numeroSocio + " " + nombre);
+        return informSocio.toString();
     }
 }

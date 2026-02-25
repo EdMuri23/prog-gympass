@@ -24,7 +24,7 @@ public class Sala {
 
     @Override
     public String toString() {
-        new StringBuilder(codigoSala + " " + descripcion);
-        return toString();
+        StringBuilder informSala = new StringBuilder(codigoSala + " " + descripcion);
+        return informSala.toString();
     }
 }

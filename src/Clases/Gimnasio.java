@@ -11,7 +11,7 @@ public class Gimnasio {
     //Maximos para los array
     private final int MAX_SOCIOS = 35;
     private final int MAX_SALAS = 8;
-
+    //todo contador click
 
     /** CONSTRUCTOR:
      * @param codigo
@@ -32,7 +32,7 @@ public class Gimnasio {
      * @param s
      * @return
      */
-    private boolean registrarSocio(Socio s) {
+    public boolean registrarSocio(Socio s) {
         boolean registrado = false;
         int posicionSocio = -1;
         int posicionPrimerHuecoLibre = -1;
@@ -57,7 +57,7 @@ public class Gimnasio {
      * @param numeroSocio
      * @return
      */
-    private Socio expulsarSocio(int numeroSocio) {
+    public Socio expulsarSocio(int numeroSocio) {
         boolean expulsado = false;
         int posicionSocio;
         Socio s = null;
@@ -78,7 +78,7 @@ public class Gimnasio {
      * @param numeroSocio
      * @return
      */
-    private boolean designarResponsable(int numeroSocio) {
+    public boolean designarResponsable(int numeroSocio) {
         boolean resultado = false;
         int posicionSocio;
 
@@ -155,7 +155,7 @@ public class Gimnasio {
      * @param sala
      * @return
      */
-    private boolean incorporaraSala(Sala sala){
+    public boolean incorporaraSala(Sala sala){
         boolean incorporada = false;
         int posicionSala = -1;
         int posicionPrimerHuecoLibre = -1;
@@ -214,6 +214,36 @@ public class Gimnasio {
         return posicionSala;
     }
 
+    public String obtenerInforme(){
+        StringBuilder inform = new StringBuilder("Informe General: " + toString());
+        int contador = 0;
+
+        inform.append("\nListado de Sala\n");
+        for (int i = 0; i < MAX_SALAS; i++) {
+            if (listaSalas[i] != null) {
+                inform.append(listaSalas[i].toString());
+                contador++;
+            }
+        }
+
+        inform.append("Total de Salas: " + contador);
+        contador = 0;
+
+        inform.append("\nListado de Socios\n");
+        for (int i = 0; i < MAX_SOCIOS; i++) {
+            if (listaSocios[i] != null) {
+                inform.append(listaSocios[i].toString());
+                if (listaSocios[i].getNumeroSocio() == responsableId) {
+                    inform.append(" (Actual Responsable)");
+                    contador++;
+                }
+            }
+        }
+
+        inform.append("Total de Socios: " + contador);
+
+        return inform.toString();
+    }
 
     //Gets
     public int getCodigo() {
@@ -225,7 +255,17 @@ public class Gimnasio {
 
     @Override
     public String toString() {
-        new StringBuilder(codigo + " " + nombre);
-        return toString();
+        StringBuilder informGym = new StringBuilder(codigo + " " + nombre);
+        return informGym.toString();
     }
+
+    /*
+    try{
+
+    } catch (Exception){
+
+    }finally {
+
+    }
+    */
 }
