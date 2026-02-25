@@ -150,6 +150,70 @@ public class Gimnasio {
         return socioEncontrado;
     }
 
+    /**INCORPORAR_SALA
+     *
+     * @param sala
+     * @return
+     */
+    private boolean incorporaraSala(Sala sala){
+        boolean incorporada = false;
+        int posicionSala = -1;
+        int posicionPrimerHuecoLibre = -1;
+
+        posicionSala = buscarSala(sala.getCodigoSala());
+
+        //1º Llamamos a buscarSala para comprobar si el Socio ya esta registrado en el Gimnasio
+        if (posicionSala != -1) {
+            //Si no existe buscamos el primer hueco vacio del array listasSocios
+            posicionPrimerHuecoLibre = buscarPrimerHuecoLibreSocio();
+            if (posicionPrimerHuecoLibre != -1) {
+                listaSalas[posicionPrimerHuecoLibre] = sala;
+                incorporada = true;
+            }
+        }
+
+        return incorporada;
+    }
+
+    /**BUSCAR_PRIMER_HUECO_LIBRE_SALA
+     *
+     * @return
+     */
+    private int buscarPrimerHuecoLibreSala () {
+        boolean huecoEncontrado = false;
+        int posicionPrimerHuecoLibre = -1;
+        int i = 0;
+
+        while (i < MAX_SALAS && !huecoEncontrado) {
+            if (listaSocios[i] == null) {
+                posicionPrimerHuecoLibre = i;
+                huecoEncontrado = true;
+            }
+            i++;
+        }
+        return posicionPrimerHuecoLibre;
+    }
+
+    /**BUSCAR_SALA
+     *
+     * @param codigoSala
+     * @return
+     */
+    private int buscarSala(int codigoSala) {
+        boolean salaEncontrado = false;
+        int posicionSala = -1;
+        int i = 0;
+
+        while (i < MAX_SALAS && !salaEncontrado) {
+            if (listaSalas[i].getCodigoSala() == codigoSala) {
+                salaEncontrado = true;
+                posicionSala = i;
+            }
+            i++;
+        }
+        return posicionSala;
+    }
+
 
     //Gets
     public int getCodigo() {
