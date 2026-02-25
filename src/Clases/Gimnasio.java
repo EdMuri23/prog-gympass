@@ -73,8 +73,23 @@ public class Gimnasio {
         return s;
     }
 
+    /** DESIGNAR_RESPONSABLE
+     *
+     * @param numeroSocio
+     * @return
+     */
     private boolean designarResponsable(int numeroSocio) {
+        boolean resultado = false;
+        int posicionSocio;
 
+        posicionSocio = buscarSocio(numeroSocio);
+
+        if (posicionSocio != -1) {
+            responsableId = posicionSocio;
+            resultado = true;
+        }
+
+        return resultado;
     }
 
     /** BUSCAR_PRIMER_HUECO_LIBRE_SOCIO
